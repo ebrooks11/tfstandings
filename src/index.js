@@ -23,22 +23,22 @@ var ScoringSystem = {
 }
 
 var seasons = [
-    // new Season(
-    //     ScoringSystem.twoone,
-    //     2018,
-    //     [
-    //         new Team(ScoringSystem.twoone, 2018, "Spencer Gourley", 2, 0, [120, 85]),
-    //         new Team(ScoringSystem.twoone, 2018, "Spencer Sobolik", 0, 0, [111, 83.2]),
-    //         new Team(ScoringSystem.twoone, 2018, "Amir Kaikhah", 2, 0, [94, 107]),
-    //         new Team(ScoringSystem.twoone, 2018, "Josh Green", 0, 0, [87, 82]),
-    //         new Team(ScoringSystem.twoone, 2018, "Evan Brooks", 2, 0, [99, 93]),
-    //         new Team(ScoringSystem.twoone, 2018, "Anthony Palomo", 0, 0, [75, 92]),
-    //         new Team(ScoringSystem.twoone, 2018, "David Palko", 1, 0, [100, 98]),
-    //         new Team(ScoringSystem.twoone, 2018, "Jack Lee", 1, 0, [82, 99]),
-    //         new Team(ScoringSystem.twoone, 2018, "Cody Dorsett", 1, 0, [97, 85]),
-    //         new Team(ScoringSystem.twoone, 2018, "Travis Walsh", 1, 0, [63, 98])
-    //     ]
-    // ),
+    new Season(
+        ScoringSystem.twoone,
+        2018,
+        [
+            new Team(ScoringSystem.twoone, 2018, "Spencer Gourley", 2, 0, [120, 85]),
+            new Team(ScoringSystem.twoone, 2018, "Spencer Sobolik", 0, 0, [111, 83.2]),
+            new Team(ScoringSystem.twoone, 2018, "Amir Kaikhah", 2, 0, [94, 107]),
+            new Team(ScoringSystem.twoone, 2018, "Josh Green", 0, 0, [87, 82]),
+            new Team(ScoringSystem.twoone, 2018, "Evan Brooks", 2, 0, [99, 93]),
+            new Team(ScoringSystem.twoone, 2018, "Anthony Palomo", 0, 0, [75, 92]),
+            new Team(ScoringSystem.twoone, 2018, "David Palko", 1, 0, [100, 98]),
+            new Team(ScoringSystem.twoone, 2018, "Jack Lee", 1, 0, [82, 99]),
+            new Team(ScoringSystem.twoone, 2018, "Cody Dorsett", 1, 0, [97, 85]),
+            new Team(ScoringSystem.twoone, 2018, "Travis Walsh", 1, 0, [63, 98])
+        ]
+    ),
     new Season(
         ScoringSystem.standard,
         2017,
@@ -176,7 +176,6 @@ class Standings extends React.Component {
         orderedSeasons.forEach(season => {
             var sortedTeams = season.teams.sort((a,b) => {
                 var teamsAreTied = b.tablePoints() === a.tablePoints();
-                // var teamsAreTied = b.wins === a.wins;
     
                 if(teamsAreTied){
                     return a.breakTie(b);
@@ -197,21 +196,20 @@ class Standings extends React.Component {
                         rows.push(<TeamStandings 
                             name={team.name}
                             wins={team.tablePoints()}
-                            // wins={team.wins}
                             losses={team.losses}
                             points={team.totalPoints()}
                             average={team.average()}
                             key={team.name} />)
                     }
 
-                    // if(this.state.season.scoringSystem === ScoringSystem.twoone){
-                    //     rows.push(<PointsTeamStandings 
-                    //         name={team.name}
-                    //         wins={team.tablePoints()}
-                    //         points={team.totalPoints()}
-                    //         average={team.average()}
-                    //         key={team.name} />)
-                    // }
+                    if(this.state.season.scoringSystem === ScoringSystem.twoone){
+                        rows.push(<PointsTeamStandings 
+                            name={team.name}
+                            wins={team.tablePoints()}
+                            points={team.totalPoints()}
+                            average={team.average()}
+                            key={team.name} />)
+                    }
                 })
             }
         });
@@ -255,23 +253,23 @@ class Standings extends React.Component {
             )
         }
 
-        // if(this.state.season.scoringSystem === ScoringSystem.twoone){
-        //     return (
-        //         <div className="standings row justify-content-center">
-        //                 <table className="col-4 table">
-        //                     <thead>
-        //                         <tr>
-        //                             <th>Team</th>
-        //                             <th>Pts</th>
-        //                             <th>Pts For</th>
-        //                             <th>Avg</th>
-        //                         </tr>
-        //                     </thead>
-        //                     {this.renderTeamStandings()}
-        //                 </table>
-        //             </div>
-        //     )
-        // }
+        if(this.state.season.scoringSystem === ScoringSystem.twoone){
+            return (
+                <div className="standings row justify-content-center">
+                        <table className="col-4 table">
+                            <thead>
+                                <tr>
+                                    <th>Team</th>
+                                    <th>Pts</th>
+                                    <th>Pts For</th>
+                                    <th>Avg</th>
+                                </tr>
+                            </thead>
+                            {this.renderTeamStandings()}
+                        </table>
+                    </div>
+            )
+        }
     }
 
     render() {

@@ -20,6 +20,10 @@ export default class Team {
         if(this.scoringSystem === this.ScoringSystems.standard){
             return this.wins;
         }
+
+        if(this.scoringSystem === this.ScoringSystems.twoone){
+            return (this.wins * 2) + this.topFiveFinishes;
+        }
     }
 
     average(){
