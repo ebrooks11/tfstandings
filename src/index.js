@@ -138,25 +138,25 @@ class Standings extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
 
-        seasons.forEach(season => {
-            var weekCount = season.teams[0].scores.length;
+        // seasons.forEach(season => {
+        //     var weekCount = season.teams[0].scores.length;
 
-            for(var i = 0; i < weekCount; i++){
-                var weekScores = [];
+        //     for(var i = 0; i < weekCount; i++){
+        //         var weekScores = [];
                 
-                season.teams.forEach(team => {
-                    weekScores.push(team.scores[i]);
-                });
+        //         season.teams.forEach(team => {
+        //             weekScores.push(team.scores[i]);
+        //         });
 
-                var sortedWeekScores = weekScores.sort(((a,b) => {return b - a;}));
+        //         var sortedWeekScores = weekScores.sort(((a,b) => {return b - a;}));
 
-                // season.teams.forEach(team => {
-                //     if(_.indexOf(sortedWeekScores, team.scores[i]) < 5){
-                //         team.topFiveFinishes += 1;
-                //     }
-                // })
-            }
-        });
+        //         season.teams.forEach(team => {
+        //             if(_.indexOf(sortedWeekScores, team.scores[i]) < 5){
+        //                 team.topFiveFinishes += 1;
+        //             }
+        //         })
+        //     }
+        // });
     }
 
     handleChange(event){
