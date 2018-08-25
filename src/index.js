@@ -40,6 +40,7 @@ var seasons = [
     //     ]
     // ),
     new Season(
+        ScoringSystem.standard,
         2017,
         [
             new Team(ScoringSystem.standard, 2017, "Spencer Gourley", 9, 4, [85.4, 106, 107.6, 119, 69.2, 87.5, 119.5, 122.2, 0, 80.6, 115.3, 127.6, 117.9]),
@@ -55,6 +56,7 @@ var seasons = [
         ]
     ),
     new Season(
+        ScoringSystem.standard,
         2016,
         [
             new Team(ScoringSystem.standard, 2016, "Spencer Gourley", 3, 10, [86.8, 80, 84.7, 122.4, 63.3, 82.8, 108.8, 74.4, 88.8, 77.5, 91.5, 65.1, 96]),
@@ -191,7 +193,7 @@ class Standings extends React.Component {
         orderedSeasons.forEach(season => {
             if(season.year.toString() === this.state.value.toString()){
                 season.teams.forEach(team => {
-                    // if(this.state.season.scoringSystem === ScoringSystem.standard){
+                    if(this.state.season.scoringSystem === ScoringSystem.standard){
                         rows.push(<TeamStandings 
                             name={team.name}
                             // wins={team.tablePoints()}
@@ -200,7 +202,7 @@ class Standings extends React.Component {
                             points={team.totalPoints()}
                             average={team.average()}
                             key={team.name} />)
-                    // }
+                    }
 
                     // if(this.state.season.scoringSystem === ScoringSystem.twoone){
                     //     rows.push(<PointsTeamStandings 
@@ -234,7 +236,7 @@ class Standings extends React.Component {
     }
 
     renderStandings() {
-        // if(this.state.season.scoringSystem === ScoringSystem.standard){
+        if(this.state.season.scoringSystem === ScoringSystem.standard){
             return (
                 <div className="standings row justify-content-center">
                         <table className="col-4 table">
@@ -251,7 +253,7 @@ class Standings extends React.Component {
                         </table>
                     </div>
             )
-        // }
+        }
 
         // if(this.state.season.scoringSystem === ScoringSystem.twoone){
         //     return (
