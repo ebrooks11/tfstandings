@@ -1,14 +1,14 @@
 import _ from 'lodash';
 
 export default class Team {
-    constructor(year, name, wins, losses, scores, topFiveFinishes){
-        // this.scoringSystem = scoringSystem;
+    constructor(scoringSystem, year, name, wins, losses, scores, topFiveFinishes){
+        this.scoringSystem = scoringSystem;
         this.year = year;
         this.name = name;
         this.wins = wins || 0;
         this.losses = losses || 0;
         this.scores = scores || [];
-        // this.topFiveFinishes = topFiveFinishes || 0;
+        this.topFiveFinishes = topFiveFinishes || 0;
 
         this.ScoringSystems = {
             standard: 0,
