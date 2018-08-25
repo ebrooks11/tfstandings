@@ -175,14 +175,14 @@ class Standings extends React.Component {
 
         orderedSeasons.forEach(season => {
             var sortedTeams = season.teams.sort((a,b) => {
-                // var teamsAreTied = b.tablePoints() === a.tablePoints();
-                var teamsAreTied = b.wins === a.wins;
+                var teamsAreTied = b.tablePoints() === a.tablePoints();
+                // var teamsAreTied = b.wins === a.wins;
     
                 if(teamsAreTied){
                     return a.breakTie(b);
                 }
     
-                return b.wins - a.wins;
+                return b.tablePoints() - a.tablePoints();
             });
 
             var fullySortedTeams = breakMultiTeamTies(sortedTeams);
@@ -196,8 +196,8 @@ class Standings extends React.Component {
                     if(this.state.season.scoringSystem === ScoringSystem.standard){
                         rows.push(<TeamStandings 
                             name={team.name}
-                            // wins={team.tablePoints()}
-                            wins={team.wins}
+                            wins={team.tablePoints()}
+                            // wins={team.wins}
                             losses={team.losses}
                             points={team.totalPoints()}
                             average={team.average()}

@@ -16,13 +16,11 @@ export default class Team {
         }
     }
 
-    // tablePoints(){
-    //     if(this.scoringSystem === this.ScoringSystems.twoone){
-    //         return (this.wins * 2) + this.topFiveFinishes;
-    //     }
-
-    //     return this.wins;
-    // }
+    tablePoints(){
+        if(this.scoringSystem === this.ScoringSystems.standard){
+            return this.wins;
+        }
+    }
 
     average(){
         if(this.totalPoints() === 0) return 0;
