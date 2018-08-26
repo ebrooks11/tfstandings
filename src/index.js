@@ -7,16 +7,6 @@ import {breakMultiTeamTies} from './tiebreaker.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Season from './season';
 
-/*
-    set up for this year
-        √ add property to indicate scoring system
-        - add new logic for 2/1 scoring system
-            - sort off of 2/1, not wins
-            - consider making flow for each type
-
-    set up hosting and go live
-*/
-
 var ScoringSystem = {
     standard: 0,
     twoone: 1
