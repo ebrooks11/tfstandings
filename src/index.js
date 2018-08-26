@@ -27,16 +27,18 @@ var seasons = [
         ScoringSystem.twoone,
         2018,
         [
-            new Team(ScoringSystem.twoone, 2018, "Spencer Gourley", 2, 0, [120, 85]),
-            new Team(ScoringSystem.twoone, 2018, "Spencer Sobolik", 0, 0, [111, 83.2]),
-            new Team(ScoringSystem.twoone, 2018, "Amir Kaikhah", 2, 0, [94, 107]),
-            new Team(ScoringSystem.twoone, 2018, "Josh Green", 0, 0, [87, 82]),
-            new Team(ScoringSystem.twoone, 2018, "Evan Brooks", 2, 0, [99, 93]),
-            new Team(ScoringSystem.twoone, 2018, "Anthony Palomo", 0, 0, [75, 92]),
-            new Team(ScoringSystem.twoone, 2018, "David Palko", 1, 0, [100, 98]),
-            new Team(ScoringSystem.twoone, 2018, "Jack Lee", 1, 0, [82, 99]),
-            new Team(ScoringSystem.twoone, 2018, "Cody Dorsett", 1, 0, [97, 85]),
-            new Team(ScoringSystem.twoone, 2018, "Travis Walsh", 1, 0, [63, 98])
+            //120, 111, 100, 99, 97, 94, 87, 82, 75, 63
+            //107, 99, 98, 98, 93, 92, 85, 84, 83.2, 82
+            new Team(ScoringSystem.twoone, 2018, "Spencer Gourley", 2, 0, [120, 85]),//5
+            new Team(ScoringSystem.twoone, 2018, "Amir Kaikhah", 2, 0, [94, 107]),//5
+            new Team(ScoringSystem.twoone, 2018, "Evan Brooks", 2, 0, [99, 93]),//6
+            new Team(ScoringSystem.twoone, 2018, "David Palko", 1, 0, [100, 98]),//4
+            new Team(ScoringSystem.twoone, 2018, "Jack Lee", 1, 0, [82, 99]),//3
+            new Team(ScoringSystem.twoone, 2018, "Cody Dorsett", 1, 0, [97, 84]),//3
+            new Team(ScoringSystem.twoone, 2018, "Travis Walsh", 1, 0, [63, 98]),//3
+            new Team(ScoringSystem.twoone, 2018, "Spencer Sobolik", 0, 0, [111, 83.2]),//1
+            new Team(ScoringSystem.twoone, 2018, "Josh Green", 0, 0, [87, 82]),//0
+            new Team(ScoringSystem.twoone, 2018, "Anthony Palomo", 0, 0, [75, 92]),//0
         ]
     ),
     new Season(
@@ -134,31 +136,33 @@ class Standings extends React.Component {
 
     constructor(props){
         super(props);
-        var selectedYear = 2017;
+        var selectedYear = 2018;
         var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
         this.state = {value: selectedYear, season: selectedSeason};
 
         this.handleChange = this.handleChange.bind(this);
 
-        // seasons.forEach(season => {
-        //     var weekCount = season.teams[0].scores.length;
+        seasons.forEach(season => {
+            var weekCount = season.teams[0].scores.length;
 
-        //     for(var i = 0; i < weekCount; i++){
-        //         var weekScores = [];
+            for(var i = 0; i < weekCount; i++){
+                var weekScores = [];
                 
-        //         season.teams.forEach(team => {
-        //             weekScores.push(team.scores[i]);
-        //         });
+                season.teams.forEach(team => {
+                    weekScores.push(team.scores[i]);
+                });
 
-        //         var sortedWeekScores = weekScores.sort(((a,b) => {return b - a;}));
+                var sortedWeekScores = weekScores.sort(((a,b) => {return b - a;}));
 
-        //         season.teams.forEach(team => {
-        //             if(_.indexOf(sortedWeekScores, team.scores[i]) < 5){
-        //                 team.topFiveFinishes += 1;
-        //             }
-        //         })
-        //     }
-        // });
+                season.teams.forEach(team => {
+                    if(_.indexOf(sortedWeekScores, team.scores[i]) < 5){
+                        team.topFiveFinishes += 1;
+                    }
+                })
+            }
+
+            console.log(season.teams);
+        });
     }
 
     handleChange(event){
@@ -187,6 +191,8 @@ class Standings extends React.Component {
             var fullySortedTeams = breakMultiTeamTies(sortedTeams);
 
             season.teams = fullySortedTeams;
+
+            console.log(season.teams);
         });
 
         orderedSeasons.forEach(season => {
@@ -213,8 +219,6 @@ class Standings extends React.Component {
                 })
             }
         });
-
-        console.log(rows);
 
         return (
             <tbody>
