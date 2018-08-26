@@ -140,19 +140,6 @@ class Standings extends React.Component {
         var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
         this.state = {value: selectedYear, season: selectedSeason};
 
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event){
-        var selectedYear = event.target.value;
-        var selectedSeason = _.filter(seasons, season => season.year.toString() === selectedYear)[0];
-        this.setState({value: event.target.value, season: selectedSeason});
-    }
-
-    renderTeamStandings() {
-
-        const rows = [];
-
         seasons.forEach(season => {
             var weekCount = season.teams[0].scores.length;
 
@@ -172,6 +159,19 @@ class Standings extends React.Component {
                 })
             }
         });
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event){
+        var selectedYear = event.target.value;
+        var selectedSeason = _.filter(seasons, season => season.year.toString() === selectedYear)[0];
+        this.setState({value: event.target.value, season: selectedSeason});
+    }
+
+    renderTeamStandings() {
+
+        const rows = [];
 
         var orderedSeasons = _.orderBy(seasons, s => s.year);
 
