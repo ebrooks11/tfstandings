@@ -29,16 +29,16 @@ var seasons = [
         [
             //120, 111, 100, 99, 97, 94, 87, 82, 75, 63
             //107, 99, 98, 98, 93, 92, 85, 84, 83.2, 82
-            new Team(ScoringSystem.twoone, 2018, "Spencer Gourley", 2, 0, [120, 85]),//5
-            new Team(ScoringSystem.twoone, 2018, "Amir Kaikhah", 2, 0, [94, 107]),//5
-            new Team(ScoringSystem.twoone, 2018, "Evan Brooks", 2, 0, [99, 93]),//6
-            new Team(ScoringSystem.twoone, 2018, "David Palko", 1, 0, [100, 98]),//4
-            new Team(ScoringSystem.twoone, 2018, "Jack Lee", 1, 0, [82, 99]),//3
-            new Team(ScoringSystem.twoone, 2018, "Cody Dorsett", 1, 0, [97, 84]),//3
-            new Team(ScoringSystem.twoone, 2018, "Travis Walsh", 1, 0, [63, 98]),//3
-            new Team(ScoringSystem.twoone, 2018, "Spencer Sobolik", 0, 0, [111, 83.2]),//1
-            new Team(ScoringSystem.twoone, 2018, "Josh Green", 0, 0, [87, 82]),//0
-            new Team(ScoringSystem.twoone, 2018, "Anthony Palomo", 0, 0, [75, 92]),//0
+            new Team(ScoringSystem.twoone, 2018, "Spencer Gourley", 0, 0, []),//5
+            new Team(ScoringSystem.twoone, 2018, "Amir Kaikhah", 0, 0, []),//5
+            new Team(ScoringSystem.twoone, 2018, "Evan Brooks", 0, 0, []),//6
+            new Team(ScoringSystem.twoone, 2018, "David Palko", 0, 0, []),//4
+            new Team(ScoringSystem.twoone, 2018, "Jack Lee", 0, 0, []),//3
+            new Team(ScoringSystem.twoone, 2018, "Cody Dorsett", 0, 0, []),//3
+            new Team(ScoringSystem.twoone, 2018, "Travis Walsh", 0, 0, []),//3
+            new Team(ScoringSystem.twoone, 2018, "Spencer Sobolik", 0, 0, []),//1
+            new Team(ScoringSystem.twoone, 2018, "Josh Green", 0, 0, []),//0
+            new Team(ScoringSystem.twoone, 2018, "Anthony Palomo", 0, 0, []),//0
         ]
     ),
     new Season(
