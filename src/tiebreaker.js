@@ -2,10 +2,12 @@ import _ from 'lodash';
 
 export function breakMultiTeamTies(sortedTeams) {
     var winGroups = _.groupBy(sortedTeams, (team) => {
-        return team.wins;
+        return team.tablePoints();
     });
 
-    var winGroupKeys = _.uniqBy(_.map(sortedTeams, team => team.wins), points => points);
+    var teamTablePoints = _.map(sortedTeams, team => team.tablePoints());
+
+    var winGroupKeys = _.uniqBy(teamTablePoints, points => points);
 
     var multiTeamTies = _.filter(winGroups, (group) => {
         return group.length > 2;
@@ -16,7 +18,7 @@ export function breakMultiTeamTies(sortedTeams) {
     multiTeamTies.forEach(winGroup => {
         var sortedGroup = breakMultiTeamTie(winGroup);
 
-        winGroups[winGroup[0].wins] = sortedGroup;
+        winGroups[winGroup[0].tablePoints()] = sortedGroup;
     });
 
     var fullySortedTeams = [];
