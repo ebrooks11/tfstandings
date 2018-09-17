@@ -104,7 +104,9 @@ class PointsTeamStandings extends React.Component {
         return (
             <tr>
                 <td>{this.props.name}</td>
+                <td>{this.props.tablePts}</td>
                 <td>{this.props.wins}</td>
+                <td>{this.props.topFive}</td>
                 <td>{this.props.points}</td>
                 <td>{this.props.average}</td>
             </tr>
@@ -196,7 +198,9 @@ class Standings extends React.Component {
                     if(this.state.season.scoringSystem === ScoringSystem.twoone){
                         rows.push(<PointsTeamStandings 
                             name={team.name}
-                            wins={team.tablePoints()}
+                            tablePts={team.tablePoints()}
+                            wins={team.wins}
+                            topFive={team.topFiveFinishes}
                             points={team.totalPoints()}
                             average={team.average()}
                             key={team.name} />)
@@ -250,6 +254,8 @@ class Standings extends React.Component {
                                 <tr>
                                     <th>Team</th>
                                     <th>Pts</th>
+                                    <th>Wins</th>
+                                    <th>Top 5</th>
                                     <th>Pts For</th>
                                     <th>Avg</th>
                                 </tr>
