@@ -25,7 +25,7 @@ var seasons = [
             new Team(ScoringSystem.twoone, 2018, "Cody Dorsett", 2, 2, [66.3, 88, 81.9, 119.1]),
             new Team(ScoringSystem.twoone, 2018, "Travis Walsh", 4, 0, [96.2, 97.2, 97.4, 90.3]),
             new Team(ScoringSystem.twoone, 2018, "Spencer Sobolik", 0, 4, [128.9, 98.7, 83.8, 105.9]),
-            new Team(ScoringSystem.twoone, 2018, "Josh Green", 2, 2, [124.1, 80.9, 114, 111.9]),
+            new Team(ScoringSystem.twoone, 2018, "BJ", 2, 2, [124.1, 80.9, 114, 111.9]),
             new Team(ScoringSystem.twoone, 2018, "Anthony Palomo", 1, 3, [80.7, 91, 64.1, 97]),
         ]
     ),
