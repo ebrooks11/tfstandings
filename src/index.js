@@ -26,7 +26,7 @@ var seasons = [
             new Team(ScoringSystem.twoone, 2019, "Tdub", 0, 1, [76.4]),
             new Team(ScoringSystem.twoone, 2019, "Spolt", 1, 0, [122.9]),
             new Team(ScoringSystem.twoone, 2019, "BJ", 1, 0, [92.6]),
-            new Team(ScoringSystem.twoone, 2019, "Lomo", 1, 0, [129.6]),
+            new Team(ScoringSystem.twoone, 2019, "Lomo", 1, 0, [130.9]),
         ]
     ),
     new Season(
