@@ -13,6 +13,22 @@ var ScoringSystem = {
 }
 
 var seasons = [
+	new Season(
+        ScoringSystem.twoone,
+        2020,
+        [
+            new Team(ScoringSystem.twoone, 2019, "Gour", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "AK", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "Kev & Eazy", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "Palko", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "Tipples", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "Codes", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "Tdub", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "Spolt", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "BJ", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2019, "Lomo", 0, 0, []),
+        ]
+    ),
     new Season(
         ScoringSystem.twoone,
         2019,
