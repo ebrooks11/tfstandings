@@ -17,7 +17,7 @@ var seasons = [
         ScoringSystem.twoone,
         2020,
         [
-            new Team(ScoringSystem.twoone, 2019, "Gour", 1, 0, [132.44, 131.78, 118.4]),
+            new Team(ScoringSystem.twoone, 2019, "Gour", 3, 0, [132.44, 131.78, 118.4]),
             new Team(ScoringSystem.twoone, 2019, "AK", 1, 2, [111.02, 81.78, 105.64]),
             new Team(ScoringSystem.twoone, 2019, "Kev & Eazy", 1, 2, [109.4, 91.06, 92.58]),
             new Team(ScoringSystem.twoone, 2019, "Palko", 0, 3, [91, 96.58, 94.44]),
