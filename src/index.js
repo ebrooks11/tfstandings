@@ -21,7 +21,7 @@ var seasons = [
             new Team(ScoringSystem.twoone, 2020, "AK", 4, 5, [111.02, 81.78, 105.64, 69.12, 68.02, 130.38, 128.72, 76.06, 89.14]),
             new Team(ScoringSystem.twoone, 2020, "Kev & Eazy", 4, 5, [109.4, 91.06, 92.58, 78.42, 71.5, 140.72, 117.7, 58.24, 105.72]),
             new Team(ScoringSystem.twoone, 2020, "Palko", 1, 8, [91, 96.58, 94.44, 73.84, 82.7, 97.44, 88.4, 93.82, 52.9]),
-            new Team(ScoringSystem.twoone, 2020, "Tipples", 4, 5, [82.08, 138.22, 92.8, 134.4, 79.18, 64, 54,42, 56.44, 84.1]),
+            new Team(ScoringSystem.twoone, 2020, "Tipples", 4, 5, [82.08, 138.22, 92.8, 134.4, 79.18, 64, 54.42, 56.44, 84.1]),
             new Team(ScoringSystem.twoone, 2020, "Codes", 3, 6, [83.1, 84.12, 85.82, 79.5, 67.86, 151.64, 99.72, 62.24, 90.26]),
             new Team(ScoringSystem.twoone, 2020, "Tdub", 4, 5, [134.16, 122.84, 110.68, 96.14, 117.46, 66.88, 143.22, 68.08, 114.34]),
             new Team(ScoringSystem.twoone, 2020, "Spolt", 7, 2, [99.5, 84.08, 101.48, 106.96, 93.92, 67.14, 117.76, 166.06, 115.46]),
