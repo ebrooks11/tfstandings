@@ -13,7 +13,23 @@ var ScoringSystem = {
 }
 
 var seasons = [
-	new Season(
+    new Season(
+        ScoringSystem.twoone,
+        2021,
+        [
+            new Team(ScoringSystem.twoone, 2020, "Gour", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "AK", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "Kev & Eazy", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "Palko", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "Tipples", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "Cruz", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "Tdub", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "Spolt", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "BJ", 0, 0, []),
+            new Team(ScoringSystem.twoone, 2020, "Ram", 0, 0, []),
+        ]
+    ),
+    new Season(
         ScoringSystem.twoone,
         2020,
         [
@@ -158,7 +174,7 @@ class Standings extends React.Component {
 
     constructor(props){
         super(props);
-        var selectedYear = 2020;
+        var selectedYear = 2021;
         var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
         this.state = {value: selectedYear, season: selectedSeason};
 
