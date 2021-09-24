@@ -192,7 +192,11 @@ class Standings extends React.Component {
 
                 season.teams.forEach(team => {
                     if(_.indexOf(sortedWeekScores, team.scores[i]) < 5){
-                        team.topFiveFinishes += 1;
+                        if(team.scores[i] == 103.36){
+                            team.topFiveFinishes += .5;
+                        }else{
+                            team.topFiveFinishes += 1;
+                        }
                     }
                 })
             }
