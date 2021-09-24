@@ -191,11 +191,17 @@ class Standings extends React.Component {
                 var sortedWeekScores = weekScores.sort(((a,b) => {return b - a;}));
 
                 season.teams.forEach(team => {
-                    if(_.indexOf(sortedWeekScores, team.scores[i]) < 5){
-                        if(team.scores[i] == 103.36){
-                            team.topFiveFinishes += .5;
-                        }else{
+                    var currentScore = team.scores[i];
+                    var indexOfCurrentScore = _.indexOf(sortedWeekScores, currentScore);
+                    if(indexOfCurrentScore < 6){
+                        if(indexOfCurrentScore < 4){
                             team.topFiveFinishes += 1;
+                        }else if(indexOfCurrentScore == 4 || indexOfCurrentScore == 5){
+                            if(sortedWeekScores[4] == sortedWeekScores[5]){
+                                team.topFiveFinishes += .5;
+                            }else{
+                                team.topFiveFinishes += indexOfCurrentScore == 4 ? 1 : 0;
+                            }
                         }
                     }
                 })
