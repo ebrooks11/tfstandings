@@ -17,16 +17,16 @@ var seasons = [
         ScoringSystem.twoone,
         2022,
         [
-            new Team(ScoringSystem.twoone, 2021, "Gour", 1, 0, [123.18]),
-            new Team(ScoringSystem.twoone, 2021, "AK", 0, 1, [68.46]),
-            new Team(ScoringSystem.twoone, 2021, "Kev & Eazy", 1, 0, [81.52]),
-            new Team(ScoringSystem.twoone, 2021, "Palko", 1, 0, [108.42]),
-            new Team(ScoringSystem.twoone, 2021, "Tipples", 0, 1, [78.38]),
-            new Team(ScoringSystem.twoone, 2021, "Cruz", 1, 0, [107.2]),
-            new Team(ScoringSystem.twoone, 2021, "Tdub", 0, 1, [89.92]),
-            new Team(ScoringSystem.twoone, 2021, "Spolt", 0, 1, [71]),
-            new Team(ScoringSystem.twoone, 2021, "BJ", 1, 0, [107.46]),
-            new Team(ScoringSystem.twoone, 2021, "Ram", 0, 1, [78.92]),
+            new Team(ScoringSystem.twoone, 2022, "Gour", 1, 0, [123.18]),
+            new Team(ScoringSystem.twoone, 2022, "AK", 0, 1, [68.46]),
+            new Team(ScoringSystem.twoone, 2022, "Kev & Eazy", 1, 0, [81.52]),
+            new Team(ScoringSystem.twoone, 2022, "Palko", 1, 0, [108.42]),
+            new Team(ScoringSystem.twoone, 2022, "Tipples", 0, 1, [78.38]),
+            new Team(ScoringSystem.twoone, 2022, "Cruz", 1, 0, [107.2]),
+            new Team(ScoringSystem.twoone, 2022, "Tdub", 0, 1, [89.92]),
+            new Team(ScoringSystem.twoone, 2022, "Spolt", 0, 1, [71]),
+            new Team(ScoringSystem.twoone, 2022, "BJ", 1, 0, [107.46]),
+            new Team(ScoringSystem.twoone, 2022, "Ram", 0, 1, [78.92]),
         ]
     ),
     new Season(
@@ -190,7 +190,7 @@ class Standings extends React.Component {
 
     constructor(props){
         super(props);
-        var selectedYear = 2021;
+        var selectedYear = 2022;
         var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
         this.state = {value: selectedYear, season: selectedSeason};
 
