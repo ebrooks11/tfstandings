@@ -15,6 +15,22 @@ var ScoringSystem = {
 var seasons = [
     new Season(
         ScoringSystem.twoone,
+        2022,
+        [
+            new Team(ScoringSystem.twoone, 2021, "Gour", 1, 0, [123.18]),
+            new Team(ScoringSystem.twoone, 2021, "AK", 0, 1, [68.46]),
+            new Team(ScoringSystem.twoone, 2021, "Kev & Eazy", 1, 0, [81.52]),
+            new Team(ScoringSystem.twoone, 2021, "Palko", 1, 0, [108.42]),
+            new Team(ScoringSystem.twoone, 2021, "Tipples", 0, 1, [78.38]),
+            new Team(ScoringSystem.twoone, 2021, "Cruz", 1, 0, [107.2]),
+            new Team(ScoringSystem.twoone, 2021, "Tdub", 0, 1, [89.92]),
+            new Team(ScoringSystem.twoone, 2021, "Spolt", 0, 1, [71]),
+            new Team(ScoringSystem.twoone, 2021, "BJ", 1, 0, [107.46]),
+            new Team(ScoringSystem.twoone, 2021, "Ram", 0, 1, [78.92]),
+        ]
+    ),
+    new Season(
+        ScoringSystem.twoone,
         2021,
         [
             new Team(ScoringSystem.twoone, 2021, "Gour", 9, 5, [100.2, 114.36, 105.28, 134.84, 116.08, 124.78, 123.88, 87.68, 125.04, 110.22, 144.66, 78.2, 100.22, 108.88]),
