@@ -13,22 +13,22 @@ var ScoringSystem = {
 }
 
 var seasons = [
-    new Season(
-        ScoringSystem.twoone,
-        2022,
-        [
-            new Team(ScoringSystem.twoone, 2022, "Gour", 1, 0, [123.18]),
-            new Team(ScoringSystem.twoone, 2022, "AK", 0, 1, [68.46]),
-            new Team(ScoringSystem.twoone, 2022, "Kev & Eazy", 1, 0, [81.52]),
-            new Team(ScoringSystem.twoone, 2022, "Palko", 1, 0, [108.42]),
-            new Team(ScoringSystem.twoone, 2022, "Tipples", 0, 1, [78.38]),
-            new Team(ScoringSystem.twoone, 2022, "Cruz", 1, 0, [107.2]),
-            new Team(ScoringSystem.twoone, 2022, "Tdub", 0, 1, [89.92]),
-            new Team(ScoringSystem.twoone, 2022, "Spolt", 0, 1, [71]),
-            new Team(ScoringSystem.twoone, 2022, "BJ", 1, 0, [107.46]),
-            new Team(ScoringSystem.twoone, 2022, "Ram", 0, 1, [78.92]),
-        ]
-    ),
+    // new Season(
+    //     ScoringSystem.twoone,
+    //     2022,
+    //     [
+    //         new Team(ScoringSystem.twoone, 2022, "Gour", 1, 0, [123.18]),
+    //         new Team(ScoringSystem.twoone, 2022, "AK", 0, 1, [68.46]),
+    //         new Team(ScoringSystem.twoone, 2022, "Kev & Eazy", 1, 0, [81.52]),
+    //         new Team(ScoringSystem.twoone, 2022, "Palko", 1, 0, [108.42]),
+    //         new Team(ScoringSystem.twoone, 2022, "Tipples", 0, 1, [78.38]),
+    //         new Team(ScoringSystem.twoone, 2022, "Cruz", 1, 0, [107.2]),
+    //         new Team(ScoringSystem.twoone, 2022, "Tdub", 0, 1, [89.92]),
+    //         new Team(ScoringSystem.twoone, 2022, "Spolt", 0, 1, [71]),
+    //         new Team(ScoringSystem.twoone, 2022, "BJ", 1, 0, [107.46]),
+    //         new Team(ScoringSystem.twoone, 2022, "Ram", 0, 1, [78.92]),
+    //     ]
+    // ),
     new Season(
         ScoringSystem.twoone,
         2021,
@@ -190,41 +190,71 @@ class Standings extends React.Component {
 
     constructor(props){
         super(props);
+
+        var query  = encodeURIComponent('Select *');
+        fetch('https://docs.google.com/spreadsheets/d/1sLyvQ862hHkdiEzd3p9XlDHrcsXONALO-7AEDjo83tw/gviz/tq?&sheet=$Sheet1&tq=' + query)
+            .then(res => res.text())
+            .then(rep => {
+                    var season = new Season(ScoringSystem.twoone, 2022, []);
+                    var data = JSON.parse(rep.substring(47).slice(0, -2));
+                    data.table.rows.forEach(team => {
+                        var scores = _.map(team.c.slice(2), function (score, index){
+                            return score.v;
+                        });
+                        season.teams.push(new Team(ScoringSystem.twoone, 2022, team.c[0].v, team.c[1].v, 0, scores));
+                    });
+
+                    this.calculateTopFives(season);
+
+                    seasons.push(season);
+
+                    var selectedYear = 2022;
+                    var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
+                    this.setState( {value: selectedYear, season: selectedSeason});
+                }
+            );
+
         var selectedYear = 2022;
         var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
-        this.state = {value: selectedYear, season: selectedSeason};
+        this.state = {value: selectedYear, season: selectedSeason || new Season()};
 
         seasons.forEach(season => {
-            var weekCount = season.teams[0].scores.length;
-
-            for(var i = 0; i < weekCount; i++){
-                var weekScores = [];
-                
-                season.teams.forEach(team => {
-                    weekScores.push(team.scores[i]);
-                });
-
-                var sortedWeekScores = weekScores.sort(((a,b) => {return b - a;}));
-
-                season.teams.forEach(team => {
-                    var currentScore = team.scores[i];
-                    var indexOfCurrentScore = _.indexOf(sortedWeekScores, currentScore);
-                    if(indexOfCurrentScore < 6){
-                        if(indexOfCurrentScore < 4){
-                            team.topFiveFinishes += 1;
-                        }else if(indexOfCurrentScore == 4 || indexOfCurrentScore == 5){
-                            if(sortedWeekScores[4] == sortedWeekScores[5]){
-                                team.topFiveFinishes += .5;
-                            }else{
-                                team.topFiveFinishes += indexOfCurrentScore == 4 ? 1 : 0;
-                            }
-                        }
-                    }
-                })
-            }
+            this.calculateTopFives(season);
         });
 
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    calculateTopFives(season) {
+        var weekCount = season.teams[0].scores.length;
+
+        for (var i = 0; i < weekCount; i++) {
+            var weekScores = [];
+
+            season.teams.forEach(team => {
+                weekScores.push(team.scores[i]);
+            });
+
+            var sortedWeekScores = weekScores.sort(((a, b) => {
+                return b - a;
+            }));
+
+            season.teams.forEach(team => {
+                var currentScore = team.scores[i];
+                var indexOfCurrentScore = _.indexOf(sortedWeekScores, currentScore);
+                if (indexOfCurrentScore < 6) {
+                    if (indexOfCurrentScore < 4) {
+                        team.topFiveFinishes += 1;
+                    } else if (indexOfCurrentScore == 4 || indexOfCurrentScore == 5) {
+                        if (sortedWeekScores[4] == sortedWeekScores[5]) {
+                            team.topFiveFinishes += .5;
+                        } else {
+                            team.topFiveFinishes += indexOfCurrentScore == 4 ? 1 : 0;
+                        }
+                    }
+                }
+            })
+        }
     }
 
     handleChange(event){
