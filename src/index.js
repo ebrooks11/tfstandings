@@ -192,7 +192,8 @@ class Standings extends React.Component {
         super(props);
 
         var query  = encodeURIComponent('Select *');
-        fetch('https://docs.google.com/spreadsheets/d/1sLyvQ862hHkdiEzd3p9XlDHrcsXONALO-7AEDjo83tw/gviz/tq?&sheet=$Sheet1&tq=' + query)
+
+        fetch('https://docs.google.com/spreadsheets/d/1sLyvQ862hHkdiEzd3p9XlDHrcsXONALO-7AEDjo83tw/gviz/tq?&sheet=2022&tq=' + query)
             .then(res => res.text())
             .then(rep => {
                     var season = new Season(ScoringSystem.twoone, 2022, []);
@@ -207,14 +208,34 @@ class Standings extends React.Component {
                     this.calculateTopFives(season);
 
                     seasons.push(season);
+                }
+            );
+        
+        fetch('https://docs.google.com/spreadsheets/d/1sLyvQ862hHkdiEzd3p9XlDHrcsXONALO-7AEDjo83tw/gviz/tq?&sheet=2023&tq=' + query)
+            .then(res => res.text())
+            .then(rep => {
+                    var season = new Season(ScoringSystem.twoone, 2023, []);
+                    var data = JSON.parse(rep.substring(47).slice(0, -2));
+                    data.table.rows.forEach(team => {
+                        var scores = _.map(team.c.slice(2), function (score, index){
+                            return score.v;
+                        });
+                        season.teams.push(new Team(ScoringSystem.twoone, 2023, team.c[0].v, team.c[1].v, 0, scores));
+                    });
 
-                    var selectedYear = 2022;
+                    this.calculateTopFives(season);
+
+                    seasons.push(season);
+
+                    var selectedYear = 2023;
                     var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
                     this.setState( {value: selectedYear, season: selectedSeason});
                 }
             );
 
-        var selectedYear = 2022;
+        
+
+        var selectedYear = 2023;
         var selectedSeason = _.filter(seasons, season => season.year === selectedYear)[0];
         this.state = {value: selectedYear, season: selectedSeason || new Season()};
 
